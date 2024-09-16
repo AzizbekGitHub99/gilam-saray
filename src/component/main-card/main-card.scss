@@ -1,0 +1,31 @@
+.main-card {
+  cursor: pointer;
+  margin: 0 auto;
+  height: fit-content;
+  display: inline-block;
+  &__head {
+    margin-bottom: 20px;
+    .image-box {
+      height: fit-content;
+      width: 100%;
+      img {
+        height: fit-content;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  &__body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-weight: 400;
+      font-size: 16px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+}
