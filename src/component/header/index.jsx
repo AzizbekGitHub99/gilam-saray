@@ -37,6 +37,7 @@ const Header = () => {
               width={210}
               height={90}
               priority
+              quality={100}
               alt="gilam saray"
             />
           </div>
