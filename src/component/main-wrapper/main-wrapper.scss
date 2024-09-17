@@ -10,3 +10,10 @@
     align-items: center;
   }
 }
+
+@media (max-width: 1600px) {
+  .main__container__wrapper{
+    gap: 40px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

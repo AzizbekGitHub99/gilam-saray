@@ -6,4 +6,48 @@
     font-size: 32px;
     font-weight: 400;
   }
+  &__container {
+    .control {
+      position: fixed;
+      bottom: 50px;
+      left: 50%;
+      translate: -50%;
+      &__filter {
+        overflow: hidden;
+        display: flex;
+        height: 44px;
+        width: 361px;
+        background-color: white;
+        padding: 0 6px;
+        border-radius: 22px;
+        list-style: none;
+        color: black;
+        box-shadow: 8px 0px 20px -10px #00000026;
+        transition: all .3s linear;
+        li {
+          display: flex;
+          align-items: center;
+          opacity: 1;
+          transition: all .3s linear;
+          button {
+            padding: 10px;
+            font-size: 18px;
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            background: none;
+            white-space: nowrap;
+          }
+        }
+      }
+      .open-filter{
+        width: 111px;
+        li{
+          &:not(:first-child){
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
 }
