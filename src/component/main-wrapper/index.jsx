@@ -12,7 +12,7 @@ const MainWrapper = () => {
 
   useEffect(() => {
     function handleResize() {
-      if (window?.innerWidth >= 1400) {
+      if (window?.innerWidth > 1400) {
         let one = [];
         let two = [];
         let three = [];
@@ -30,7 +30,7 @@ const MainWrapper = () => {
           three: three,
           four: four,
         });
-      } else if (window?.innerWidth >= 900) {
+      } else if (window?.innerWidth > 900) {
         let one = [];
         let two = [];
         let three = [];
@@ -45,7 +45,7 @@ const MainWrapper = () => {
           two: two,
           three: three,
         });
-      } else if (window?.innerWidth >= 600) {
+      } else if (window?.innerWidth > 600) {
         let one = [];
         let two = [];
         setCheckSize(2);

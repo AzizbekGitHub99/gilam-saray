@@ -31,7 +31,7 @@ const Header = () => {
               <Icons.bucket color={param == "/cart" ? "white" : "black"} />
             </Link>
           </div>
-          <div className="logo">
+          <Link href="/" className="logo">
             <Image
               src="/assets/images/logo.png"
               width={210}
@@ -40,7 +40,7 @@ const Header = () => {
               quality={100}
               alt="gilam saray"
             />
-          </div>
+          </Link>
           <a href="tel:+998991404422" className="call">
             <Icons.phone />
             +998 99 140-44-22

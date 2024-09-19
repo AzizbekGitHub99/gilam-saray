@@ -11,9 +11,21 @@
   }
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1400px) {
   .main__container__wrapper{
     gap: 40px;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+@media (max-width: 900px) {
+  .main__container__wrapper{
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+  @media (max-width: 600px) {
+    .main__container__wrapper{
+      gap: 40px;
+      grid-template-columns: 1fr;
+    }
+  }

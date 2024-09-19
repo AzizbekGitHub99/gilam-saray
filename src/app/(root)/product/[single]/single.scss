@@ -3,6 +3,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  margin-bottom: 120px;
   &__inner {
     width: 100%;
     margin: auto;
@@ -31,8 +32,8 @@
         width: 520px;
         display: flex;
         justify-content: space-between;
-        span{
-            color: #F8501A;
+        span {
+          color: #f8501a;
         }
       }
       .optionals {
@@ -67,27 +68,97 @@
           }
         }
       }
-      .buttons{display: flex;
+      .buttons {
+        display: flex;
         height: 56px;
         gap: 10px;
-        .to-cart{
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            background-color: var(--main-color);
-            padding: 0 30px;
-            line-height: 56px;
+        .to-cart {
+          border-radius: 2px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: white;
+          background-color: var(--main-color);
+          padding: 0 30px;
+          line-height: 56px;
+          width: 220px;
         }
-        .share{
-            border-radius: 2px;
+        .to-cart-btns {
+          height: 56px;
+          width: 220px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          span{
+            font-size: 20px;
+          }
+          button{
+            color: var(--main-color);
+            border: 1px solid var(--main-color);
+            width: 56px;
+            height: 56px;
+            font-size: 20px;
+            display: grid;
+            place-items: center;
+            transition: all .3s linear;
+            &:hover{
+              background-color: var(--main-color);
+              color: white;
+            }
+          }
+        }
+        .share {
+          border-radius: 2px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #282828;
+          background-color: white;
+          padding: 20px 30px;
+        }
+      }
+    }
+  }
+  & {
+    .control {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      translate: -50%;
+      &__filter {
+        overflow: hidden;
+        display: flex;
+        height: 44px;
+        width: 361px;
+        background-color: white;
+        padding: 0 6px;
+        border-radius: 22px;
+        list-style: none;
+        color: black;
+        box-shadow: 8px 0px 20px -10px #00000026;
+        transition: all .3s linear;
+        li {
+          display: flex;
+          align-items: center;
+          opacity: 1;
+          transition: all .3s linear;
+          button {
+            padding: 10px;
+            font-size: 18px;
+            gap: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #282828;
-            background-color: white;
-            padding: 20px 30px;
+            background: none;
+            white-space: nowrap;
+          }
+        }
+      }
+      .open-filter{
+        width: 111px;
+        li{
+          &:not(:first-child){
+            opacity: 0;
+          }
         }
       }
     }

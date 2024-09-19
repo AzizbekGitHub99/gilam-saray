@@ -38,3 +38,14 @@ button {
   outline: none;
   border: none;
 }
+
+@media (max-width: 2000px) {
+  .container {
+    width: 90%;
+  }
+}
+@media (max-width: 1400px) {
+  .container {
+    width: 96%;
+  }
+}

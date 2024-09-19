@@ -7,7 +7,7 @@ import { Icons } from "@/app/utils";
 import "./home.scss";
 
 export default function Home() {
-  const [isFilter, setIsFilter] = useState(false);
+  const [isFilter, setIsFilter] = useState(true);
   return (
     <Fragment>
       <section className="main">
