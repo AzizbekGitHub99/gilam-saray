@@ -17,7 +17,7 @@ const inter = Inter({
 
 export const metadata = {
   title: "Gilam Saray",
-  description: "Gilam Saray",
+  description: "Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray | Gilam Saray",
 };
 
 export default function RootLayout({ children }) {
