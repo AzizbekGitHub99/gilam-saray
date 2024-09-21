@@ -17,7 +17,7 @@ const MainCard = ({ data }) => {
 
   return data?.id !== undefined ? (
     <Link
-      href={`product/${data?.id}`}
+      href={`/product/${data?.id}`}
       className="main-card"
       style={{
         width: cardWidth,
