@@ -14,6 +14,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   scroll-behavior: smooth;
+  min-height: 100svh;
 }
 
 .container {

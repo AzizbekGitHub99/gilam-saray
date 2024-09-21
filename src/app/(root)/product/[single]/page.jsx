@@ -1,21 +1,24 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
 import { gilams, Icons } from "@/app/utils";
 
 import "./single.scss";
 import { CART } from "@/constants";
 import MainWrapper from "@/component/main-wrapper";
+import Link from "next/link";
 
 const SinglePage = () => {
   const [isFilter, setIsFilter] = useState(true);
   const [current, setCurrent] = useState();
   const { single } = useParams();
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem(CART)) || []
+    JSON.parse(localStorage.getItem(CART).toString() || "[]")
   );
+
+  const param = usePathname();
 
   const cartBtn = (attr) => {
     let cache = current;
@@ -117,6 +120,22 @@ const SinglePage = () => {
           </div>
         </div>
         <div className="control">
+          <div className="control__menu">
+            <div className="burger">
+              <div className="burger__icon">
+                <span></span>
+                <span></span>
+              </div>
+              Menu
+            </div>
+          </div>
+          <Link
+            href="/cart"
+            className="control__cart"
+            style={param == "/cart" ? { backgroundColor: "#bd8e1f" } : {}}
+          >
+            <Icons.bucket color={param == "/cart" ? "white" : "black"} />
+          </Link>
           <ul
             className={
               isFilter ? "open-filter control__filter" : "control__filter"
