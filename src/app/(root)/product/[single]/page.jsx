@@ -15,7 +15,7 @@ const SinglePage = () => {
   const [current, setCurrent] = useState();
   const { single } = useParams();
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem(CART).toString() || "[]")
+    JSON.parse(localStorage.getItem(CART) || "[]")
   );
 
   const param = usePathname();
