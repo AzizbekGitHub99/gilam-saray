@@ -36,6 +36,7 @@ const SinglePage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0});
     setCurrent(
       cart?.find((el) => el.id == +single) ||
         gilams?.find((el) => el.id == +single)
