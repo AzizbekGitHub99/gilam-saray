@@ -1,21 +1,21 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
-import Image from "next/image";
 import { useParams, usePathname } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
 
+import { CART } from "@/constants";
+import MainWrapper from "@/component/main-wrapper";
 import { gilams, Icons } from "@/app/utils";
 
 import "./single.scss";
-import { CART } from "@/constants";
-import MainWrapper from "@/component/main-wrapper";
-import Link from "next/link";
 
 const SinglePage = () => {
   const [isFilter, setIsFilter] = useState(true);
   const [current, setCurrent] = useState();
   const { single } = useParams();
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem(CART) || "[]")
+    JSON.parse(localStorage.getItem(CART || []))
   );
 
   const param = usePathname();
@@ -36,12 +36,15 @@ const SinglePage = () => {
   };
 
   useEffect(() => {
-    window.scrollTo({ top: 0});
+    window.scrollTo({ top: 0 });
+  }, []);
+
+  useEffect(() => {
     setCurrent(
       cart?.find((el) => el.id == +single) ||
         gilams?.find((el) => el.id == +single)
     );
-  }, [single, cart]);
+  }, [single, current, cart]);
 
   return (
     <Fragment>
@@ -69,38 +72,35 @@ const SinglePage = () => {
               </div>
               <div className="optional color">
                 <Icons.colorPot color={current?.color} />
-
                 <span>Beige</span>
               </div>
               <div className="optional size">{`${current?.g_width} x ${current?.g_height}`}</div>
             </div>
             <div className="main">
-              <ul>
-                <li>Вес ковра</li>
-                <li>Высота ворса (мм.)</li>
-                <li>Плотность по основе</li>
-                <li>Плотность по утку</li>
-                <li>Плотность ворса</li>
-                <li>Производитель</li>
-                <li>Стиль</li>
-                <li>Цвет</li>
-                <li>Коллекция</li>
-                <li>Материал дорса</li>
-                <li>Форма</li>
-              </ul>
-              <ul>
-                <li>2,35 кг/м2</li>
-                <li>12</li>
-                <li>40</li>
-                <li>44</li>
-                <li>352 000 точек на 1 м2</li>
-                <li>SAG. Узбекистан</li>
-                <li>Современный</li>
-                <li>серый / голубой</li>
-                <li>Prada</li>
-                <li>100% Полипропилен</li>
-                <li>Прямоугольный</li>
-              </ul>
+              <div className="main-wrapper">
+                <div className="main-wrapper-item">Вес ковра</div>
+                <div className="main-wrapper-item">Высота ворса (мм.)</div>
+                <div className="main-wrapper-item">Плотность по основе</div>
+                <div className="main-wrapper-item">Плотность по утку</div>
+                <div className="main-wrapper-item">Плотность ворса</div>
+                <div className="main-wrapper-item">Производитель</div>
+                <div className="main-wrapper-item">Стиль</div>
+                <div className="main-wrapper-item">Цвет</div>
+                <div className="main-wrapper-item">Коллекция</div>
+                <div className="main-wrapper-item">Материал дорса</div>
+                <div className="main-wrapper-item">Форма</div>
+                <div className="main-wrapper-item">2,35 кг/м2</div>
+                <div className="main-wrapper-item">12</div>
+                <div className="main-wrapper-item">40</div>
+                <div className="main-wrapper-item">44</div>
+                <div className="main-wrapper-item">352 000 точек на 1 м2</div>
+                <div className="main-wrapper-item">SAG. Узбекистан</div>
+                <div className="main-wrapper-item">Современный</div>
+                <div className="main-wrapper-item">серый / голубой</div>
+                <div className="main-wrapper-item">Prada</div>
+                <div className="main-wrapper-item">100% Полипропилен</div>
+                <div className="main-wrapper-item">Прямоугольный</div>
+              </div>  
             </div>
             <div className="buttons">
               {current?.quantity > 0 ? (

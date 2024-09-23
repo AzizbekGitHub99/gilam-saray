@@ -25,6 +25,7 @@
 }
   @media (max-width: 600px) {
     .main__container__wrapper{
+      padding: 0 15px ;
       gap: 40px;
       grid-template-columns: 1fr;
     }
