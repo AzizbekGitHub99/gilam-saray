@@ -6,7 +6,6 @@ import "./main-card.scss";
 
 const MainCard = ({ data }) => {
   let cardWidth = "100%";
-  console.log(data);
   if (data?.g_width >= 300) {
     cardWidth = "100%";
   } else if (data?.g_width >= 200) {

@@ -52,12 +52,11 @@
       .main {
         border-radius: 2px;
         padding: 40px 80px 40px 40px;
-        display: flex;
-        justify-content: space-between;
         width: 520px;
         margin-bottom: 55px;
         background-color: white;
         &-wrapper {
+          justify-content: space-between;
           list-style: none;
           display: grid;
           grid-template-columns: 1fr 1fr;

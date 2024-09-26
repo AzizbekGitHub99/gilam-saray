@@ -32,7 +32,6 @@ const SinglePage = () => {
     setCurrent(cache);
     setCart([...cart, cache]);
     localStorage.setItem(CART, JSON.stringify([...cart, cache]));
-    console.log(cache);
   };
 
   useEffect(() => {
@@ -66,14 +65,14 @@ const SinglePage = () => {
               <span>{`${current?.price} so'm`}</span>
             </div>
             <div className="optionals">
-              <div className="optional shape">
+              {/* <div className="optional shape">
                 <Icons.rect />
                 <span>Rectangle</span>
               </div>
               <div className="optional color">
                 <Icons.colorPot color={current?.color} />
                 <span>Beige</span>
-              </div>
+              </div> */}
               <div className="optional size">{`${current?.g_width} x ${current?.g_height}`}</div>
             </div>
             <div className="main">
