@@ -33,15 +33,21 @@
 @media (max-width: 980px) {
   .header {
     &__container {
-      .logo {
-        img {
-          width: 140px;
-          height: 60px;
-        }
-      }
       .call {
         span{
           display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    &__container {
+      .call {
+        display: none;
+        span{
         }
       }
     }

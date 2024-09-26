@@ -100,7 +100,7 @@ const SinglePage = () => {
                 <div className="main-wrapper-item">Prada</div>
                 <div className="main-wrapper-item">100% Полипропилен</div>
                 <div className="main-wrapper-item">Прямоугольный</div>
-              </div>  
+              </div>
             </div>
             <div className="buttons">
               {current?.quantity > 0 ? (
@@ -169,7 +169,9 @@ const SinglePage = () => {
           </ul>
         </div>
       </div>
-      <MainWrapper />
+      <div className="container">
+        <MainWrapper />
+      </div>
     </Fragment>
   );
 };
