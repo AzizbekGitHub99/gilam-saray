@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { setCookie, getCookie } from 'cookies-next';
+import { getCookie } from 'cookies-next';
 
 
 import { CART } from "@/constants";
