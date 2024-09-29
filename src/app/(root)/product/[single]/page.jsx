@@ -16,9 +16,7 @@ const SinglePage = () => {
   const [isFilter, setIsFilter] = useState(true);
   const [current, setCurrent] = useState();
   const { single } = useParams();
-  const [cart, setCart] = useState(JSON.parse(getCookie(CART) || "[]"));
-  console.log(JSON.parse(getCookie(CART) || "[]"));
-  
+  const [cart, setCart] = useState(JSON.parse(getCookie(CART) || "[]")); 
 
   const param = usePathname();
 
@@ -27,7 +25,7 @@ const SinglePage = () => {
     if (attr === "to") {
       cache.quantity = 1;
       setCart([...cart, cache]);
-      setCookie(CART, cache)
+      setCookie(CART, JSON.stringify([...cart, cache]))
       // localStorage.setItem(CART, JSON.stringify([...cart, cache]));
     } else if (attr === "+") {
       ++cache.quantity;
@@ -38,7 +36,7 @@ const SinglePage = () => {
         return el;
       });
       setCart(fake);
-      setCookie(CART, fake)
+      setCookie(CART, JSON.stringify(fake))
       
       // localStorage.setItem(CART, JSON.stringify(fake));
     } else if (attr === "-") {
@@ -54,7 +52,7 @@ const SinglePage = () => {
         return el;
       });
       setCart(fake);
-      setCookie(CART, fake)
+      setCookie(CART, JSON.stringify(fake))
       // localStorage.setItem(CART, JSON.stringify(fake));
     }
     setCurrent(cache);
