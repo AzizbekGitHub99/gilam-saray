@@ -16,7 +16,9 @@ const SinglePage = () => {
   const [isFilter, setIsFilter] = useState(true);
   const [current, setCurrent] = useState();
   const { single } = useParams();
-  const [cart, setCart] = useState(getCookie(CART));
+  const [cart, setCart] = useState(JSON.parse(getCookie(CART) || "[]"));
+  console.log(JSON.parse(getCookie(CART) || "[]"));
+  
 
   const param = usePathname();
 
@@ -25,7 +27,7 @@ const SinglePage = () => {
     if (attr === "to") {
       cache.quantity = 1;
       setCart([...cart, cache]);
-      setCookie(CART, fake)
+      setCookie(CART, cache)
       // localStorage.setItem(CART, JSON.stringify([...cart, cache]));
     } else if (attr === "+") {
       ++cache.quantity;
@@ -56,7 +58,6 @@ const SinglePage = () => {
       // localStorage.setItem(CART, JSON.stringify(fake));
     }
     setCurrent(cache);
-    console.log(cart);
   };
 
   useEffect(() => {
