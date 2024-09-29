@@ -1,6 +1,8 @@
 "use client";
 import { Fragment, useEffect, useState } from "react";
 import { useParams, usePathname } from "next/navigation";
+import { setCookie, getCookie } from 'cookies-next';
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,9 +16,7 @@ const SinglePage = () => {
   const [isFilter, setIsFilter] = useState(true);
   const [current, setCurrent] = useState();
   const { single } = useParams();
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem(CART) || "[]")
-  );
+  const [cart, setCart] = useState(getCookie(CART));
 
   const param = usePathname();
 
@@ -25,7 +25,8 @@ const SinglePage = () => {
     if (attr === "to") {
       cache.quantity = 1;
       setCart([...cart, cache]);
-      localStorage.setItem(CART, JSON.stringify([...cart, cache]));
+      setCookie(CART, fake)
+      // localStorage.setItem(CART, JSON.stringify([...cart, cache]));
     } else if (attr === "+") {
       ++cache.quantity;
       let fake = cart?.map((el) => {
@@ -35,7 +36,9 @@ const SinglePage = () => {
         return el;
       });
       setCart(fake);
-      localStorage.setItem(CART, JSON.stringify(fake));
+      setCookie(CART, fake)
+      
+      // localStorage.setItem(CART, JSON.stringify(fake));
     } else if (attr === "-") {
       --cache.quantity;
       let fake;
@@ -49,7 +52,8 @@ const SinglePage = () => {
         return el;
       });
       setCart(fake);
-      localStorage.setItem(CART, JSON.stringify(fake));
+      setCookie(CART, fake)
+      // localStorage.setItem(CART, JSON.stringify(fake));
     }
     setCurrent(cache);
     console.log(cart);
@@ -80,12 +84,10 @@ const SinglePage = () => {
             />
           </div>
           <div className="single__inner__right">
-            <p className="name">              {current?.name}
-            </p>
+            <p className="name"> {current?.name}</p>
             <div className="optionals">
               <div className="optional size">
-
-            {`${current?.g_width} x ${current?.g_height}`}
+                {`${current?.g_width} x ${current?.g_height}`}
               </div>
               <div className="optional price">{`${current?.price} so'm`}</div>
             </div>
