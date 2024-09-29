@@ -2,11 +2,12 @@
   min-height: calc(100vh - 140px);
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: start;
   margin-bottom: 120px;
   &__inner {
     width: 100%;
-    margin: auto;
+    height: 75vh;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -21,40 +22,49 @@
     }
     &__right {
       width: 50%;
-      .type {
-        color: var(--main-color);
-        font-size: 16px;
-        text-transform: uppercase;
-        margin-bottom: 25px;
-      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       .name {
-        margin-bottom: 30px;
+        font-size: 32px;
+        text-transform: uppercase;
+      }
+      .optionals {
         width: 520px;
         display: flex;
         justify-content: space-between;
-        span {
-          color: #f8501a;
-        }
-      }
-      .optionals {
-        display: flex;
-        gap: 40px;
-        margin-bottom: 20px;
         .optional {
           display: flex;
           align-items: center;
+          justify-content: space-between;
           span {
             font-size: 16px;
           }
           gap: 5px;
         }
+        span {
+          color: #f8501a;
+        }
       }
+      // .optionals {
+      //   display: flex;
+      //   gap: 40px;
+      //   margin-bottom: 20px;
+      //   .optional {
+      //     display: flex;
+      //     align-items: center;
+      //     span {
+      //       font-size: 16px;
+      //     }
+      //     gap: 5px;
+      //   }
+      // }
       .main {
         border-radius: 2px;
-        padding: 40px 80px 40px 40px;
+        padding: 40px 80px 40px 0px;
         width: 520px;
-        margin-bottom: 55px;
-        background-color: white;
+        margin-bottom: 30px;
+        // background-color: white;
         &-wrapper {
           justify-content: space-between;
           list-style: none;
@@ -238,6 +248,7 @@
   .single {
     justify-content: center;
     &__inner {
+      height: fit-content;
       flex-wrap: wrap;
       justify-content: center;
       &__left {

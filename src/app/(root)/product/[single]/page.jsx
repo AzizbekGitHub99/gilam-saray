@@ -80,21 +80,14 @@ const SinglePage = () => {
             />
           </div>
           <div className="single__inner__right">
-            <p className="type">classic</p>
-            <div className="name">
-              {current?.name}
-              <span>{`${current?.price} so'm`}</span>
-            </div>
+            <p className="name">              {current?.name}
+            </p>
             <div className="optionals">
-              {/* <div className="optional shape">
-                <Icons.rect />
-                <span>Rectangle</span>
+              <div className="optional size">
+
+            {`${current?.g_width} x ${current?.g_height}`}
               </div>
-              <div className="optional color">
-                <Icons.colorPot color={current?.color} />
-                <span>Beige</span>
-              </div> */}
-              <div className="optional size">{`${current?.g_width} x ${current?.g_height}`}</div>
+              <div className="optional price">{`${current?.price} so'm`}</div>
             </div>
             <div className="main">
               <div className="main-wrapper">
