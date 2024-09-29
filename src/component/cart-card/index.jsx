@@ -1,17 +1,19 @@
 import { useState } from "react";
+import { setCookie, getCookie } from 'cookies-next';
+
 import "./cart-card.scss";
 import { CART } from "@/constants";
 
 const CartCard = () => {
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem(CART) || "[]")
-  );
+  const [cart, setCart] = useState(JSON.parse(getCookie(CART) || "[]")); 
+
   const cartBtn = (attr) => {
     let cache = current;
     if (attr === "to") {
       cache.quantity = 1;
       setCart([...cart, cache]);
-      localStorage.setItem(CART, JSON.stringify([...cart, cache]));
+      setCookie(CART, JSON.stringify([...cart, cache]))
+      // localStorage.setItem(CART, JSON.stringify([...cart, cache]));
     } else if (attr === "+") {
       ++cache.quantity;
       let fake = cart?.map((el) => {
@@ -21,7 +23,9 @@ const CartCard = () => {
         return el;
       });
       setCart(fake);
-      localStorage.setItem(CART, JSON.stringify(fake));
+      setCookie(CART, JSON.stringify(fake))
+      
+      // localStorage.setItem(CART, JSON.stringify(fake));
     } else if (attr === "-") {
       --cache.quantity;
       let fake;
@@ -35,7 +39,8 @@ const CartCard = () => {
         return el;
       });
       setCart(fake);
-      localStorage.setItem(CART, JSON.stringify(fake));
+      setCookie(CART, JSON.stringify(fake))
+      // localStorage.setItem(CART, JSON.stringify(fake));
     }
     setCurrent(cache);
   };
