@@ -1,19 +1,17 @@
 import axios from "axios";
 
-const baseURL = process.env.NEXT_PUBLIC_API_URL
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 export const api = axios.create({
-    baseURL,
- });
+  baseURL,
+});
 
- export const getAllProducts = async () => {
-    const res = await api.get('/api/products?populate=*')
-    return res.data
- }
+export const getAllProducts = async () => {
+  const res = await api.get("/api/products?populate=*");
+  return res.data;
+};
 
- export const getProductById = async (id) => {  
-   const res = await api.get(`/api/products?filters[id][$eq]=${id}&populate=*`)
-   console.log(res);
-   
-   return res.data
- }
+export const getProductById = async (id) => {
+  const res = await api.get(`/api/products?filters[id][$eq]=${id}&populate=*`);
+  return res.data;
+};

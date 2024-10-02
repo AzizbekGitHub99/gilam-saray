@@ -16,7 +16,7 @@ const SinglePage = async({ params }) => {
   const products = await getAllProducts();
   const current = await getProductById(params.single);
   const carpet = current?.data?.[0]
-  console.log(current);
+  console.log(carpet);
   
   return (
     <Fragment>
