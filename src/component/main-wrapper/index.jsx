@@ -5,9 +5,7 @@ import MainCard from "../main-card";
 
 import "./main-wrapper.scss";
 
-const MainWrapper = ({data}) => {
-   console.log(data);
-  
+const MainWrapper = ({data}) => {  
   const [checkSize, setCheckSize] = useState(4);
   const [columns, setColumns] = useState({});
 

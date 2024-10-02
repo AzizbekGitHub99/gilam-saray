@@ -5,7 +5,6 @@ import Link from "next/link";
 import "./main-card.scss";
 
 const MainCard = ({ data }) => {
-  console.log(data.media.formats.large.url);
   
   let cardWidth = "100%";
   if (data?.size.lenght >= 300) {

@@ -1,99 +1,43 @@
-"use client";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
+import dynamic from 'next/dynamic';
 import Image from "next/image";
 
-import { CART } from "@/constants";
 import MainWrapper from "@/component/main-wrapper";
-import { gilams, Icons } from "@/app/utils";
 import BottomPanel from "@/component/bottom-panel";
-import { getProductById } from "@/request";
+import { getAllProducts, getProductById } from "@/request";
 
 import "./single.scss";
 
-const SinglePage = ({params}) => {
-  console.log(params);
-  const single = getProductById(params.single)
-  const [current, setCurrent] = useState();
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem(CART) || "[]")
-  );
 
-
-  const cartBtn = (attr) => {
-    let cache = current;
-    if (attr === "to") {
-      cache.quantity = 1;
-      setCart([...cart, cache]);
-      localStorage.setItem(CART, JSON.stringify([...cart, cache]));
-    } else if (attr === "+") {
-      ++cache.quantity;
-      let fake = cart?.map((el) => {
-        if (el.id === cache.id) {
-          return cache;
-        }
-        return el;
-      });
-      setCart(fake);
-      localStorage.setItem(CART, JSON.stringify(fake));
-    } else if (attr === "-") {
-      --cache.quantity;
-      let fake;
-      if (cache.quantity === 0) {
-        fake = cart?.filter((el) => el.id === cache.id);
-      }
-      fake = cart?.map((el) => {
-        if (el.id === cache.id) {
-          return cache;
-        }
-        return el;
-      });
-      setCart(fake);
-      localStorage.setItem(CART, JSON.stringify(fake));
-    }
-    setCurrent(cache);
-    console.log(cart);
-  };
-
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, []);
-
-  useEffect(() => {
-    setCurrent(
-      cart?.find((el) => el.id == +single) ||
-        gilams?.find((el) => el.id == +single)
-    );
-  }, [single, current, cart]);
-
+const SinglePage = async({ params }) => {
+  const ToCard = dynamic(() => import('@/component/to-cart-btns'), {
+    ssr: false,
+  });
+  const products = await getAllProducts();
+  const current = await getProductById(params.single);
+  const carpet = current?.data?.[0]
+  console.log(current);
+  
   return (
     <Fragment>
       <div className="single">
         <div className="single__inner">
           <div className="single__inner__left">
             <Image
-              src={current?.image || "/assets/images/logo.png"}
+              src={`http://localhost:1344${carpet?.media?.url || ''}`}
               quality={100}
               priority
               fill
-              alt={current?.name || "gilam"}
+              alt={carpet?.name || "gilam"}
             />
           </div>
           <div className="single__inner__right">
-            <p className="type">classic</p>
-            <div className="name">
-              {current?.name}
-              <span>{`${current?.price} so'm`}</span>
-            </div>
+            <p className="name"> {carpet?.collection.title + " " + carpet?.model.title}</p>
             <div className="optionals">
-              {/* <div className="optional shape">
-                <Icons.rect />
-                <span>Rectangle</span>
+              <div className="optional size">
+                {`${carpet?.size.lenght} x ${carpet?.size.height}`}
               </div>
-              <div className="optional color">
-                <Icons.colorPot color={current?.color} />
-                <span>Beige</span>
-              </div> */}
-              <div className="optional size">{`${current?.g_width} x ${current?.g_height}`}</div>
+              <div className="optional price">{`${carpet?.price} so'm`}</div>
             </div>
             <div className="main">
               <div className="main-wrapper">
@@ -121,28 +65,13 @@ const SinglePage = ({params}) => {
                 <div className="main-wrapper-item">Прямоугольный</div>
               </div>
             </div>
-            <div className="buttons">
-              {current?.quantity > 0 ? (
-                <div className="to-cart-btns">
-                  <button onClick={() => cartBtn("-")}>-</button>
-                  <span>{current?.quantity}</span>
-                  <button onClick={() => cartBtn("+")}>+</button>
-                </div>
-              ) : (
-                <button onClick={() => cartBtn("to")} className="to-cart">
-                  Добавить в корзину <Icons.bucket />
-                </button>
-              )}
-              <button className="share">
-                Поделится <Icons.share />
-              </button>
-            </div>
+            <ToCard data={carpet} />
           </div>
         </div>
-       <BottomPanel/>
+        <BottomPanel />
       </div>
       <div className="container">
-        <MainWrapper />
+        <MainWrapper data={products.data} />
       </div>
     </Fragment>
   );

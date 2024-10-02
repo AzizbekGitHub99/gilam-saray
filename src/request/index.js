@@ -11,7 +11,9 @@ export const api = axios.create({
     return res.data
  }
 
- export const getProductById = async (id) => {
-   const res = await api.get(`/api/products/${id}`)
+ export const getProductById = async (id) => {  
+   const res = await api.get(`/api/products?filters[id][$eq]=${id}&populate=*`)
+   console.log(res);
+   
    return res.data
  }

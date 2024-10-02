@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { getCookie } from 'cookies-next';
+
 
 import { CART } from "@/constants";
 
@@ -9,7 +11,7 @@ import CartCard from "@/component/cart-card";
 
 const Cart = () => {
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem(CART || []))
+    useState(JSON.parse(getCookie(CART) || "[]"))
   );
   return (
     <div className="cart">
