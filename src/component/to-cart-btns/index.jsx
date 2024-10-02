@@ -8,8 +8,6 @@ import "./to-cart-btns.scss";
 import { useState } from "react";
 
 const ToCardBtns = ({ data }) => {
-  console.log(data);
-
   const [cart, setCart] = useState(JSON.parse(getCookie(CART) || "[]"));
   const [current, setCurrent] = useState(
     cart.find((el) => el.id === data?.id) || data

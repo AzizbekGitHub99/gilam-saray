@@ -7,6 +7,7 @@ import BottomPanel from "@/component/bottom-panel";
 import { getAllProducts, getProductById } from "@/request";
 
 import "./single.scss";
+import ToCardBtns from "@/component/to-cart-btns";
 
 
 const SinglePage = async({ params }) => {
@@ -65,7 +66,7 @@ const SinglePage = async({ params }) => {
                 <div className="main-wrapper-item">Прямоугольный</div>
               </div>
             </div>
-            <ToCard data={carpet} />
+            <ToCardBtns data={carpet} />
           </div>
         </div>
         <BottomPanel />
