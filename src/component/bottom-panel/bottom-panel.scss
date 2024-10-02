@@ -1,0 +1,118 @@
+.control {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    translate: -50%;
+    gap: 5px;
+    display: flex;
+    &__menu {
+      display: flex;
+      height: 44px;
+      .burger {
+        border: 1px solid #0000000d;
+        border-radius: 2px;
+        background-color: white;
+        box-shadow: 0px 8px 20px -10px #00000026;
+        display: flex;
+        height: 44px;
+        width: 117px;
+        font-size: 22px;
+        justify-content: center;
+        gap: 14px;
+        align-items: center;
+        cursor: pointer;
+        &__icon {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          padding: 6px 0;
+          height: 20px;
+          width: 20px;
+          span {
+            height: 2px;
+            width: 20px;
+            transform-origin: 40%;
+            background-color: black;
+            transition: all 0.3s linear;
+          }
+        }
+        &:hover {
+          .burger__icon {
+            span {
+              &:nth-child(1) {
+                transform: rotate(45deg) translateY(2px);
+              }
+              &:nth-child(2) {
+                transform: rotate(-45deg) translateY(-2px);
+              }
+            }
+          }
+        }
+      }
+    }
+    &__cart {
+      border-radius: 2px;
+      background-color: white;
+      box-shadow: 0px 8px 20px -10px #00000026;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      transition: all 0.4s linear;
+      &:hover {
+        background-color: var(--main-color);
+        border: none;
+        svg {
+          path {
+            stroke: white;
+          }
+        }
+      }
+    }
+    .active {
+      border: none;
+      background-color: var(--main-color);
+      svg {
+        path {
+          stroke: white;
+        }
+      }
+    }
+    &__filter {
+      overflow: hidden;
+      display: flex;
+      height: 44px;
+      width: 361px;
+      background-color: white;
+      padding: 0 6px;
+      border-radius: 2px;
+      list-style: none;
+      color: black;
+      box-shadow: 8px 0px 20px -10px #00000026;
+      transition: all 0.3s linear;
+      li {
+        display: flex;
+        align-items: center;
+        opacity: 1;
+        transition: all 0.3s linear;
+        button {
+          padding: 10px;
+          font-size: 18px;
+          gap: 10px;
+          display: flex;
+          align-items: center;
+          background: none;
+          white-space: nowrap;
+        }
+      }
+    }
+    .open-filter {
+      width: 111px;
+      li {
+        &:not(:first-child) {
+          opacity: 0;
+        }
+      }
+    }
+  }

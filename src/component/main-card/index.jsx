@@ -5,10 +5,12 @@ import Link from "next/link";
 import "./main-card.scss";
 
 const MainCard = ({ data }) => {
+  console.log(data.media.formats.large.url);
+  
   let cardWidth = "100%";
-  if (data?.g_width >= 300) {
+  if (data?.size.lenght >= 300) {
     cardWidth = "100%";
-  } else if (data?.g_width >= 200) {
+  } else if (data?.size.lenght >= 200) {
     cardWidth = "80%";
   } else {
     cardWidth = "60%";
@@ -25,18 +27,18 @@ const MainCard = ({ data }) => {
       <div className="main-card__head">
         <div className="image-box">
           <Image
-            src={data?.image}
+            src={`http://localhost:1344${data?.media.formats.large.url}`}
             width={100000}
             quality={100}
             priority
             height={100}
-            alt={data?.name}
+            alt={data?.collection.title}
           />
         </div>
       </div>
       <div className="main-card__body">
-        <h1>{data?.name}</h1>
-        <p>{`${data?.g_width} x ${data?.g_height}`}</p>
+        <h1>{data?.collection.title + " " + data?.model.title}</h1>
+        <p>{`${data?.size.lenght} x ${data?.size.height}`}</p>
       </div>
     </Link>
   ) : (

@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { gilams } from "@/app/utils";
 import MainCard from "../main-card";
 
 import "./main-wrapper.scss";
 
-const MainWrapper = () => {
+const MainWrapper = ({data}) => {
+   console.log(data);
+  
   const [checkSize, setCheckSize] = useState(4);
   const [columns, setColumns] = useState({});
 
@@ -18,11 +19,11 @@ const MainWrapper = () => {
         let three = [];
         let four = [];
         setCheckSize(4);
-        for (let i = 0; i < gilams.length; i = i + 4) {
-          one.push(gilams[i]);
-          two.push(gilams[i + 1]);
-          three.push(gilams[i + 2]);
-          four.push(gilams[i + 3]);
+        for (let i = 0; i < data?.length; i = i + 4) {
+          one.push(data[i]);
+          two.push(data[i + 1]);
+          three.push(data[i + 2]);
+          four.push(data[i + 3]);
         }
         setColumns({
           one: one,
@@ -35,10 +36,10 @@ const MainWrapper = () => {
         let two = [];
         let three = [];
         setCheckSize(3);
-        for (let i = 0; i < gilams.length; i = i + 3) {
-          one.push(gilams[i]);
-          two.push(gilams[i + 1]);
-          three.push(gilams[i + 2]);
+        for (let i = 0; i < data?.length; i = i + 3) {
+          one.push(data[i]);
+          two.push(data[i + 1]);
+          three.push(data[i + 2]);
         }
         setColumns({
           one: one,
@@ -49,9 +50,9 @@ const MainWrapper = () => {
         let one = [];
         let two = [];
         setCheckSize(2);
-        for (let i = 0; i < gilams.length; i = i + 2) {
-          one.push(gilams[i]);
-          two.push(gilams[i + 1]);
+        for (let i = 0; i < data?.length; i = i + 2) {
+          one.push(data[i]);
+          two.push(data[i + 1]);
         }
         setColumns({
           one: one,
@@ -60,8 +61,8 @@ const MainWrapper = () => {
       } else {
         let one = [];
         setCheckSize(1);
-        for (let i = 0; i < gilams.length; i++) {
-          one.push(gilams[i]);
+        for (let i = 0; i < data?.length; i++) {
+          one.push(data[i]);
         }
         setColumns({
           one: one,
@@ -71,7 +72,7 @@ const MainWrapper = () => {
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
-  }, [checkSize]);
+  }, [checkSize, data]);
   return (
     <div className="main__container__wrapper">
       {checkSize == 4 ? (

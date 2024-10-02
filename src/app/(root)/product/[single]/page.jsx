@@ -1,24 +1,23 @@
 "use client";
 import { Fragment, useEffect, useState } from "react";
-import { useParams, usePathname } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 
 import { CART } from "@/constants";
 import MainWrapper from "@/component/main-wrapper";
 import { gilams, Icons } from "@/app/utils";
+import BottomPanel from "@/component/bottom-panel";
+import { getProductById } from "@/request";
 
 import "./single.scss";
 
-const SinglePage = () => {
-  const [isFilter, setIsFilter] = useState(true);
+const SinglePage = ({params}) => {
+  console.log(params);
+  const single = getProductById(params.single)
   const [current, setCurrent] = useState();
-  const { single } = useParams();
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem(CART) || "[]")
   );
 
-  const param = usePathname();
 
   const cartBtn = (attr) => {
     let cache = current;
@@ -140,54 +139,7 @@ const SinglePage = () => {
             </div>
           </div>
         </div>
-        <div className="control">
-          <div className="control__menu">
-            <div className="burger">
-              <div className="burger__icon">
-                <span></span>
-                <span></span>
-              </div>
-              Menu
-            </div>
-          </div>
-          <Link
-            href="/cart"
-            className="control__cart"
-            style={param == "/cart" ? { backgroundColor: "#bd8e1f" } : {}}
-          >
-            <Icons.bucket color={param == "/cart" ? "white" : "black"} />
-          </Link>
-          <ul
-            className={
-              isFilter ? "open-filter control__filter" : "control__filter"
-            }
-          >
-            <li>
-              <button onClick={() => setIsFilter(!isFilter)}>
-                {isFilter ? (
-                  <>
-                    <Icons.tornado />
-                    <span>Filter</span>
-                  </>
-                ) : (
-                  <Icons.ex />
-                )}
-              </button>
-            </li>
-            <li>
-              <button>Style ↑</button>
-            </li>
-            <li>
-              <button>Shape ↑</button>
-            </li>
-            <li>
-              <button>Size ↑</button>
-            </li>
-            <li>
-              <button>Color ↑</button>
-            </li>
-          </ul>
-        </div>
+       <BottomPanel/>
       </div>
       <div className="container">
         <MainWrapper />
