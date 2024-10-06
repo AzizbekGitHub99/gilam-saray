@@ -26,7 +26,7 @@ const MainCard = ({ data }) => {
       <div className="main-card__head">
         <div className="image-box">
           <Image
-            src={`http://localhost:1344${data?.media.formats.large.url}`}
+            src={`https://api.gilamsaray.uz${data?.media.formats.large.url}`}
             width={100000}
             quality={100}
             priority

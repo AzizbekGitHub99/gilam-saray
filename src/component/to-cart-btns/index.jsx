@@ -19,6 +19,13 @@ const ToCardBtns = ({ data }) => {
       cache.quantity = 1;
       setCart([...cart, cache]);
       setCookie(CART, JSON.stringify([...cart, cache]));
+    } else if (attr === "out") {
+      ++cache.quantity;
+      if (cache.quantity === 0) {
+        fake = cart?.filter((el) => el.id === cache.id);
+      }
+      setCart(fake);
+      setCookie(CART, JSON.stringify(fake));
     } else if (attr === "+") {
       ++cache.quantity;
       let fake = cart?.map((el) => {
@@ -50,11 +57,9 @@ const ToCardBtns = ({ data }) => {
   return (
     <div className="buttons">
       {current?.quantity > 0 ? (
-        <div className="to-cart-btns">
-          <button onClick={() => cartBtn("-")}>-</button>
-          <span>{current?.quantity}</span>
-          <button onClick={() => cartBtn("+")}>+</button>
-        </div>
+         <button onClick={() => cartBtn("out")} className="out-cart">
+         Уже добавлено <Icons.bucket />
+       </button>
       ) : (
         <button onClick={() => cartBtn("to")} className="to-cart">
           Добавить в корзину <Icons.bucket />

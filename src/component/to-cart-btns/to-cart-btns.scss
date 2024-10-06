@@ -13,36 +13,53 @@
     line-height: 56px;
     width: 220px;
     svg {
-        path {
-          stroke: white;
-        }
+      path {
+        stroke: white;
       }
+    }
   }
-  .to-cart-btns {
-    height: 56px;
-    width: 220px;
+  .out-cart {
+    border-radius: 2px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    span {
-      font-size: 20px;
-    }
-    button {
-      color: var(--main-color);
-      border: 1px solid var(--main-color);
-      background-color: white;
-      width: 56px;
-      height: 56px;
-      font-size: 20px;
-      display: grid;
-      place-items: center;
-      transition: all 0.3s linear;
-      &:hover {
-        background-color: var(--main-color);
-        color: white;
+    gap: 10px;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    background-color: white;
+    padding: 0 30px;
+    line-height: 56px;
+    width: 220px;
+    svg {
+      path {
+        stroke: white;
       }
     }
   }
+  // .to-cart-btns {
+  //   height: 56px;
+  //   width: 220px;
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   span {
+  //     font-size: 20px;
+  //   }
+  //   button {
+  //     color: var(--main-color);
+  //     border: 1px solid var(--main-color);
+  //     background-color: white;
+  //     width: 56px;
+  //     height: 56px;
+  //     font-size: 20px;
+  //     display: grid;
+  //     place-items: center;
+  //     transition: all 0.3s linear;
+  //     &:hover {
+  //       background-color: var(--main-color);
+  //       color: white;
+  //     }
+  //   }
+  // }
   .share {
     border-radius: 2px;
     display: flex;

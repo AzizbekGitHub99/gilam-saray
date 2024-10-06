@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import Image from "next/image";
 
 import MainWrapper from "@/component/main-wrapper";
@@ -11,9 +11,9 @@ import ToCardBtns from "@/component/to-cart-btns";
 
 
 const SinglePage = async({ params }) => {
-  const ToCard = dynamic(() => import('@/component/to-cart-btns'), {
-    ssr: false,
-  });
+  // const ToCard = dynamic(() => import('@/component/to-cart-btns'), {
+  //   ssr: false,
+  // });
   const products = await getAllProducts();
   const current = await getProductById(params.single);
   const carpet = current?.data?.[0]
