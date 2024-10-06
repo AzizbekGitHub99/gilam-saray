@@ -25,7 +25,7 @@ const SinglePage = async({ params }) => {
         <div className="single__inner">
           <div className="single__inner__left">
             <Image
-              src={`http://localhost:1344${carpet?.media?.url || ''}`}
+              src={`https://api.gilamsaray.uz${carpet?.media?.url || ''}`}
               quality={100}
               priority
               fill
