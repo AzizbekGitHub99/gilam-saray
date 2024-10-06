@@ -13,9 +13,7 @@ const MainCard = ({ data }) => {
     cardWidth = "80%";
   } else {
     cardWidth = "60%";
-  }
-  console.log(data?.id);
-  
+  }  
 
   return data?.id !== undefined ? (
     <Link

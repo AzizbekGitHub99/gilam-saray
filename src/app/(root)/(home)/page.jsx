@@ -8,7 +8,6 @@ import BottomPanel from "@/component/bottom-panel";
 
 export default async function Home() {
   const products = await getAllProducts();
-  console.log(products);
 
   return (
     <Fragment>
@@ -17,7 +16,7 @@ export default async function Home() {
           Sharq an&apos;analarining qulay va <br /> go&apos;zal gilamlari
         </h1>
         <div className="container main__container">
-          <MainWrapper data={products.data} />
+          <MainWrapper data={products?.data} />
           <BottomPanel />
         </div>
       </section>
