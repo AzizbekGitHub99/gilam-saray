@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 
 import MainWrapper from "@/component/main-wrapper";
+import BottomPanel from "@/component/bottom-panel";
+import { getAllProducts } from "@/request";
 
 import "./home.scss";
-import { getAllProducts } from "@/request";
-import BottomPanel from "@/component/bottom-panel";
 
 const Home = async () => {
   const products = await getAllProducts();
