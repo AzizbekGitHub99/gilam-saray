@@ -6,7 +6,7 @@ import "./home.scss";
 import { getAllProducts } from "@/request";
 import BottomPanel from "@/component/bottom-panel";
 
-export default async function Home() {
+const Home = async () => {
   const products = await getAllProducts();
 
   return (
@@ -22,4 +22,6 @@ export default async function Home() {
       </section>
     </Fragment>
   );
-}
+};
+
+export default Home;

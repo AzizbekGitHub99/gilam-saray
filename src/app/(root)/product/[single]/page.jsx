@@ -72,7 +72,7 @@ const SinglePage = async({ params }) => {
         <BottomPanel />
       </div>
       <div className="container">
-        <MainWrapper data={products.data} />
+        <MainWrapper data={products?.data} />
       </div>
     </Fragment>
   );
