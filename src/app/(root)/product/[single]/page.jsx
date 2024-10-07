@@ -8,22 +8,22 @@ import { getAllProducts, getProductById } from "@/request";
 
 import "./single.scss";
 
-export async function generateMetadata({ params }) {
-  // read route params
-  const id = params.single;
-  console.log(id);
+// export async function generateMetadata({ params }) {
+//   // read route params
+//   const id = params.single;
+//   console.log(id);
 
-  // fetch data
-  const product = await getProductById(id);
+//   // fetch data
+//   const product = await getProductById(id);
 
-  return {
-    // title: product?.collection.title,
-    openGraph: {
-      title: "",
-      images: [`https://api.gilamsaray.uz${product.data[0]?.media?.url || ""}`],
-    },
-  };
-}
+//   return {
+//     // title: product?.collection.title,
+//     openGraph: {
+//       title: "",
+//       images: [`https://api.gilamsaray.uz${product.data[0]?.media?.url || ""}`],
+//     },
+//   };
+// }
 
 const SinglePage = async ({ params }) => {
   const products = await getAllProducts();

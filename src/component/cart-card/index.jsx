@@ -13,7 +13,6 @@ const CartCard = () => {
       cache.quantity = 1;
       setCart([...cart, cache]);
       setCookie(CART, JSON.stringify([...cart, cache]))
-      // localStorage.setItem(CART, JSON.stringify([...cart, cache]));
     } else if (attr === "+") {
       ++cache.quantity;
       let fake = cart?.map((el) => {
@@ -24,8 +23,6 @@ const CartCard = () => {
       });
       setCart(fake);
       setCookie(CART, JSON.stringify(fake))
-      
-      // localStorage.setItem(CART, JSON.stringify(fake));
     } else if (attr === "-") {
       --cache.quantity;
       let fake;
@@ -40,7 +37,6 @@ const CartCard = () => {
       });
       setCart(fake);
       setCookie(CART, JSON.stringify(fake))
-      // localStorage.setItem(CART, JSON.stringify(fake));
     }
     setCurrent(cache);
   };
