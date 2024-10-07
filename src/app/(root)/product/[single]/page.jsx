@@ -12,7 +12,6 @@ export async function generateMetadata({ params }) {
   // read route params
   const id = params.single;
   console.log(id);
-  
 
   // fetch data
   const product = await getProductById(id);
@@ -21,16 +20,16 @@ export async function generateMetadata({ params }) {
     // title: product?.collection.title,
     openGraph: {
       title: "",
-      images: [`https://api.gilamsaray.uz${product?.media?.url || ""}`],
+      images: [`https://api.gilamsaray.uz${product.data[0]?.media?.url || ""}`],
     },
   };
 }
 
 const SinglePage = async ({ params }) => {
   const products = await getAllProducts();
-  const {data} = await getProductById(params.single);
-  const carpet = data?.[0];
-  console.log(products);
+  const current = await getProductById(params.single);
+  const carpet = current?.data[0];
+  console.log(carpet);
 
   return (
     <Fragment>
