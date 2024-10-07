@@ -11,12 +11,14 @@ import "./single.scss";
 export async function generateMetadata({ params }) {
   // read route params
   const id = params.single;
+  console.log(id);
+  
 
   // fetch data
   const product = await getProductById(id);
 
   return {
-    title: product.collection.title,
+    // title: product?.collection.title,
     openGraph: {
       title: "",
       images: [`https://api.gilamsaray.uz${product?.media?.url || ""}`],
@@ -26,9 +28,9 @@ export async function generateMetadata({ params }) {
 
 const SinglePage = async ({ params }) => {
   const products = await getAllProducts();
-  const current = await getProductById(params.single);
-  const carpet = await current?.data?.[0];
-  console.log(carpet);
+  const {data} = await getProductById(params.single);
+  const carpet = data?.[0];
+  console.log(products);
 
   return (
     <Fragment>
@@ -40,12 +42,11 @@ const SinglePage = async ({ params }) => {
               quality={100}
               priority
               fill
-              alt={carpet?.name || "gilam"}
+              alt={carpet?.media?.alternativeText || "gilam"}
             />
           </div>
           <div className="single__inner__right">
             <p className="name">
-              {" "}
               {carpet?.collection.title + " " + carpet?.model.title}
             </p>
             <div className="optionals">
