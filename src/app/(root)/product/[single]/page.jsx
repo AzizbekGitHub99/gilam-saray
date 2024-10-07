@@ -10,33 +10,33 @@ import "./single.scss";
 
 export async function generateMetadata({ params }) {
   // read route params
-  const id = params.single
- 
+  const id = params.single;
+
   // fetch data
-  const product = await getProductById(id)
- 
+  const product = await getProductById(id);
+
   return {
-    title: product.title,
+    title: product.collection.title,
     openGraph: {
-      title: '',
-      images: [`https://api.gilamsaray.uz${product?.media?.url || ''}`],
+      title: "",
+      images: [`https://api.gilamsaray.uz${product?.media?.url || ""}`],
     },
-  }
+  };
 }
 
-const SinglePage = async({ params }) => {
+const SinglePage = async ({ params }) => {
   const products = await getAllProducts();
   const current = await getProductById(params.single);
-  const carpet = current?.data?.[0]
+  const carpet = await current?.data?.[0];
   console.log(carpet);
-  
+
   return (
     <Fragment>
       <div className="single">
         <div className="single__inner">
           <div className="single__inner__left">
             <Image
-              src={`https://api.gilamsaray.uz${carpet?.media?.url || ''}`}
+              src={`https://api.gilamsaray.uz${carpet?.media?.url || ""}`}
               quality={100}
               priority
               fill
@@ -44,7 +44,10 @@ const SinglePage = async({ params }) => {
             />
           </div>
           <div className="single__inner__right">
-            <p className="name"> {carpet?.collection.title + " " + carpet?.model.title}</p>
+            <p className="name">
+              {" "}
+              {carpet?.collection.title + " " + carpet?.model.title}
+            </p>
             <div className="optionals">
               <div className="optional size">
                 {`${carpet?.size.lenght} x ${carpet?.size.height}`}
