@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
     title: product.title,
     openGraph: {
       title: '',
-      images: [`https://api.gilamsaray.uz${carpet?.media?.url || ''}`],
+      images: [`https://api.gilamsaray.uz${product?.media?.url || ''}`],
     },
   }
 }
