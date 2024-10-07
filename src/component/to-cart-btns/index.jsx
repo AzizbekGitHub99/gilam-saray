@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from 'react';
+
 import { setCookie, getCookie } from "cookies-next";
 import { Icons } from "@/app/utils";
 import { CART } from "@/constants";
 
 import "./to-cart-btns.scss";
-import { useState } from "react";
 
 const ToCardBtns = ({ data }) => {
   const [cart, setCart] = useState(JSON.parse(getCookie(CART) || "[]"));

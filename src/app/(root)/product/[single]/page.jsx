@@ -8,6 +8,21 @@ import { getAllProducts, getProductById } from "@/request";
 
 import "./single.scss";
 
+export async function generateMetadata({ params }) {
+  // read route params
+  const id = params.single
+ 
+  // fetch data
+  const product = await getProductById(id)
+ 
+  return {
+    title: product.title,
+    openGraph: {
+      title: '',
+      images: [`https://api.gilamsaray.uz${carpet?.media?.url || ''}`],
+    },
+  }
+}
 
 const SinglePage = async({ params }) => {
   const products = await getAllProducts();

@@ -6,6 +6,8 @@ import { getAllProducts } from "@/request";
 
 import "./home.scss";
 
+export const dynamic = 'force-dynamic'
+
 const Home = async () => {
   const products = await getAllProducts();
 
